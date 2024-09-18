@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% titleweb = 'COSMO-MANGO - Carrito' %>
+    <!-- Se inyecta el head -->
+    <%- include('../partials/head.ejs') %>
+</head>
+
+<body onload="getShoppingCart()">
+    <!-- Se inyecta el nav -->
+    <%- include('../partials/nav.ejs') %>
+
+        <main style="display: none;">
+            <section class="h-100" style="background-color: #eee;">
+                <div class="container h-100 py-5">
+                    <div id='full-cart' class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-10">
+
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h3 class="fw-normal mb-0 text-black">Carrito De Compra</h3>
+                            </div>
+
+                            <div id="cart-products" class="card mb-4">
+                                    <div class="card-body p-4 d-flex flex-row align-items-center justify-content-between">
+                                        <h1>TOTAL:</h1>
+                                        <h3 id="total-price">348.96 €</h3>
+                                        <button type="submit" data-mdb-button-init data-mdb-ripple-init onclick="deleteCart(false)"
+                                            class="btn btn-outline-danger btn-lg ms-3">Borrar Carrito</button>
+                                    </div>
+                            </div>
+
+                            <div class="card mb-4">
+                                <form action="/buy" method="GET">
+                                    <div class="card-body p-4 d-flex flex-row">
+                                        <div data-mdb-input-init class="form-outline flex-fill">
+                                            <label class="form-label" for="form1">Código De Descuento</label>
+                                            <input type="text" name="discountName" id="form1"
+                                                class="form-control form-control-lg" />
+                                        </div>
+                                        <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                                            class="btn btn-outline-warning btn-lg ms-3">Validar</button>
+                                    </div>
+                                </form>
+
+                            </div>
+
+                            <% if(discount){ %>
+                                <% length=discounts.length %>
+                                    <div class="card mb-4">
+                                        <div id="discountContainer" class="card-body p-4 d-flex flex-column">
+                                            <% if(length !==0) { %>
+                                                <div class="d-flex flex-row justify-content-around w-100">
+                                                    <span><b>Nombre Descuento</b></span>
+
+                                                    <span><b>Valor Descuento</b></span>
+                                                </div>
+
+                                                <script>
+                                                    showDiscounts('<%= JSON.stringify(discounts) %>')
+                                                </script>
+                                                <% } else { %>
+                                                    <h1 class="text-center align-items-center mb-0">NO EXISTE EL
+                                                        DESCUENTO
+                                                        :(</h1>
+                                                    <% } %>
+                                        </div>
+                                    </div>
+                                    <% } %>
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <button type="button" onclick="buy()"
+                                                    class="btn btn-warning btn-lg w-100" data-mdb-button-init
+                                                    data-mdb-ripple-init
+                                                    class="btn btn-warning btn-block btn-lg">Procesar El Pago</button>
+                                            </div>
+                                        </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Se inyecta el footer -->
+        <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

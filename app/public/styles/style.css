@@ -1,0 +1,93 @@
+#app-name {
+    font-family: cursive;
+    margin-right: .3rem !important;
+}
+
+#mango-image {
+    width: 1.8rem;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+footer a {
+    text-decoration: revert-layer;
+}
+
+.bs-alert {
+    left: 12%;
+}
+
+#cart-amount-color {
+    --bs-bg-opacity: 1;
+    --bs-text-opacity: 1;
+
+    background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+    color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+#btn-cart:hover #cart-amount-color {
+    background-color: rgba(var(--bs-white-rgb), var(--bs-bg-opacity)) !important;
+    color: rgba(var(--bs-black-rgb), var(--bs-text-opacity)) !important;
+}
+
+nav,
+footer {
+    min-height: 10vh;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.product,
+.product-total-price {
+    font-size: 1.1rem;
+}
+
+#search {
+    margin-left: 25%;
+}
+
+#product-not-found {
+    height: 20rem;
+}
+
+@media (max-width: 760px) {
+    #main-cart {
+        min-height: 78.5vh;
+    }
+
+    .product-name {
+        font-size: 1rem;
+    }
+
+    #search {
+        width: 75% !important;
+        margin-left: 12%;
+    }
+
+    #search .card-body {
+        flex-direction: column;
+        gap: 2px !important;
+    }
+
+    #search .form-label {
+        align-self: flex-start;
+    }
+
+    section.py-5 {
+        padding-top: .3rem !important;
+    }
+}
+
+#map{
+    width: 100%;
+    height: 100%;
+}

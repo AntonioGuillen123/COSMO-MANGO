@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./app:/app
+
+  mongodb:
+    image: mongo:latest
+    restart: always
+    environment:
+      TZ: Europe/Madrid
+      MONGO_INITDB_ROOT_USERNAME:
+      MONGO_INITDB_ROOT_PASSWORD: 
+    volumes:
+      - ./data/mongodb:/data/db
+      - ./data/mongo-init-scripts:/docker-entrypoint-initdb.d
+    ports:
+      - "27017:27017"
